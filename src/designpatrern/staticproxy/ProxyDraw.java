@@ -1,26 +1,22 @@
 /**
  * 
  */
-package designpatrern.proxy;
+package designpatrern.staticproxy;
 
 /**
+ * 静态代理的实现，代理实现被代理对象的同一个接口
  * @author Administrator
- *
  */
 public class ProxyDraw implements Draw {
 
 	RealDraw realDraw;
 	
-	/* (non-Javadoc)
-	 * @see designpatrern.proxy.Draw#draw(java.lang.String)
-	 */
+	public ProxyDraw (RealDraw draw){
+		this.realDraw = draw;
+	}
+	
 	@Override
 	public void draw(String name) {
-
-		if(realDraw == null){
-			realDraw = new RealDraw();
-		}
 		realDraw.draw(name);
 	}
-
 }

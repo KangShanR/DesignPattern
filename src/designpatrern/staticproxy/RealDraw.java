@@ -1,4 +1,4 @@
-package designpatrern.proxy;
+package designpatrern.staticproxy;
 
 public class RealDraw implements Draw {
 
