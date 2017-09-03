@@ -1,6 +1,6 @@
 package designpatrern.factory.abstractfactory;
 
-public class LenovoFactory implements AbstractFactory {
+public class LenovoFactory extends AbstractFactory {
 
 	@Override
 	public EngineAmd createEngine() {

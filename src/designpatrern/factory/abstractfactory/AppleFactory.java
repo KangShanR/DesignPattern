@@ -1,6 +1,6 @@
 package designpatrern.factory.abstractfactory;
 
-public class AppleFactory implements AbstractFactory {
+public class AppleFactory extends AbstractFactory {
 
 	@Override
 	public EngineIntel createEngine() {

@@ -1,8 +1,8 @@
 package designpatrern.factory.abstractfactory;
 
-public interface AbstractFactory {
+public abstract class AbstractFactory {
 
-	Engine createEngine();
+	abstract Engine createEngine();
 	
-	MusicBox createMusicBox();
+	abstract MusicBox createMusicBox();
 }
