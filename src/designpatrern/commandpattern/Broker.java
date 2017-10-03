@@ -25,6 +25,7 @@ public class Broker {
 		for(Order order:orders){
 			order.excute();
 		}
+		orders.clear();
 	}
 	
 //	测试
