@@ -30,9 +30,9 @@ public class ProxyDraw {
 					@Override
 					public Object invoke(Object proxy, Method method, Object[] args)
 							throws Throwable {
-						System.out.println("Porxy_start");
+						System.out.println("Proxy_start");
 						Object returnValue = method.invoke(target, args);
-						System.out.println("Porxy_end");
+						System.out.println("Proxy_end");
 						return returnValue;
 					}
 				});

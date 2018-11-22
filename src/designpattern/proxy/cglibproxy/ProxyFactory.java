@@ -32,7 +32,7 @@ public class ProxyFactory implements MethodInterceptor{
 	
 	/**
 	 * 获取代理的方法
-	 * @return
+	 * @return Object
 	 */
 	Object getProxyIns(){
 		//增强工具
