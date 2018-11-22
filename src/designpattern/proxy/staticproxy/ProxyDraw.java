@@ -5,7 +5,7 @@ package designpattern.proxy.staticproxy;
 
 /**
  * 静态代理的实现，代理实现被代理对象的同一个接口
- * @author Administrator
+ * @author ks
  */
 public class ProxyDraw implements Draw {
 
