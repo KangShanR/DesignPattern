@@ -17,6 +17,7 @@ public class ProxyDraw implements Draw {
 	
 	@Override
 	public void draw(String name) {
+		System.out.println("代理开始执行目标动作……");
 		realDraw.draw(name);
 	}
 }
