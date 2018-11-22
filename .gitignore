@@ -34,7 +34,7 @@ proguard/
 
 .reviewboardrc
 .reviewboardrc
-.gitignore
+# .gitignore
 
 #META-INF
 META-INF
