@@ -8,7 +8,7 @@ package designpattern.singleton;
 public class Test {
 
     public static void main(String[] args){
-        System.out.println(StaticInnerClassSingleton.getInstance());
+        System.out.println("fasdfsadf\n\tsdfsadf\n\tsdfsdfsd");
 
     }
 

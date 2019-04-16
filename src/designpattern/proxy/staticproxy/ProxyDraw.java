@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package designpattern.proxy.staticproxy;
 
@@ -10,14 +10,17 @@ package designpattern.proxy.staticproxy;
 public class ProxyDraw implements Draw {
 
 	RealDraw realDraw;
-	
-	public ProxyDraw (RealDraw draw){
+    private Object object;
+
+    public ProxyDraw (RealDraw draw){
 		this.realDraw = draw;
 	}
-	
+
 	@Override
 	public void draw(String name) {
 		System.out.println("代理开始执行目标动作……");
 		realDraw.draw(name);
-	}
+        System.out.println("代理结束");
+    }
+
 }
