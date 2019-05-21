@@ -3,6 +3,8 @@
  */
 package designpattern.proxy.dynamicproxy;
 
+import designpattern.proxy.dynamicproxy.log.impl.Logger;
+
 import java.util.Date;
 
 /**
@@ -23,9 +25,12 @@ public class DynamicProxyTest {
 
 		//动态代理的实现
 		Draw realDraw = new RealDraw();
-		Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns2();
-//		Draw proxyDraw = (Draw)new ProxyDraw(realDraw).getProxyIns();
-		proxyDraw.draw("drawName");
+		System.out.println("proxyDraw1 .....");
+		Draw proxyDraw2 = (Draw)new ProxyDraw(realDraw).getProxyIns2();
+        proxyDraw2.draw("drawName");
+        System.out.println("proxyDraw1 .....");
+		Draw proxyDraw = (Draw)new ProxyDraw().getProxyIns(realDraw, new Logger());
+        proxyDraw.draw("drawName");
 	}
 	
 }
