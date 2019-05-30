@@ -15,12 +15,10 @@ public class Logger implements ILogger {
 
 
     public void start(Method method) {
-        System.out.println("method: " + method.getName() + " start ...");
         log.info("method: " + method.getName() + " start ...");
     }
 
     public void end(Method method) {
-        System.out.println("method ：" + method.getName() + " end ...");
         log.info("method " + method.getName() + " end ...");
     }
 }

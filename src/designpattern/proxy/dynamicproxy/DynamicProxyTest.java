@@ -4,12 +4,14 @@
 package designpattern.proxy.dynamicproxy;
 
 import designpattern.proxy.dynamicproxy.log.impl.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 
 /**
  * @author Administrator
  */
+@Slf4j
 public class DynamicProxyTest {
 
 	/**
@@ -23,7 +25,12 @@ public class DynamicProxyTest {
 	    Integer a = 1___1;
 //		assert a == 1 : "the a != 1";
 
-		//动态代理的实现
+        log.error("log:" + null);
+        Integer b = null;
+        log.error(b.toString() + "nullPointer");
+
+
+        //动态代理的实现
 		Draw realDraw = new RealDraw();
 		System.out.println("proxyDraw1 .....");
 		Draw proxyDraw2 = (Draw)new ProxyDraw(realDraw).getProxyIns2();

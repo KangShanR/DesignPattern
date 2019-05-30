@@ -5,11 +5,8 @@ package designpattern.proxy.dynamicproxy;
 
 import lombok.NoArgsConstructor;
 
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 /**
  * @author Administrator
@@ -36,8 +33,10 @@ public class ProxyDraw {
 		        target.getClass().getClassLoader(),
 				target.getClass().getInterfaces(),
                 (proxy, method, args) -> {
-//                    System.out.println(proxy.toString());     //此行代码将产生递归调用生成代理而出现内存溢出，
-                                                                // 所以此处的 proxy 就是此处实现的本身 **此处有疑问**
+//                    System.out.println(proxy.toString());     // 此行代码将产生递归调用生成代理
+                                                                // 而出现内存溢出，
+                                                                // 所以此处的 proxy 就是此处实现的本身
+                                                                // **此处有疑问**
                     Class<?> clazz = this.proxyOpr.getClass();
                     Method   start = clazz.getDeclaredMethod("start", Method.class);
                     start.invoke(this.proxyOpr, method);
@@ -54,7 +53,8 @@ public class ProxyDraw {
 	 */
 	public Object getProxyIns2() {
 		System.out.println("ProxyDraw.getProxyIns2...............");
-		return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(),
+		return Proxy.newProxyInstance(target.getClass().getClassLoader(),
+                target.getClass().getInterfaces(),
 				new InvokeHandler(this.target)); 
 	}
 }
