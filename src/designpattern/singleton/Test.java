@@ -1,14 +1,31 @@
 package designpattern.singleton;
 
+import lombok.extern.slf4j.Slf4j;
+
+import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
+
 /**
  * @description
  * @author KangShan
  * @date 2019/2/19 15:36
  */
+@Slf4j
 public class Test {
 
     public static void main(String[] args){
-        System.out.println("fasdfsadf\n\tsdfsadf\n\tsdfsdfsd");
+        SortedMap<String, Charset> stringCharsetSortedMap = Charset.availableCharsets();
+
+        Set<Map.Entry<String, Charset>> entries = stringCharsetSortedMap.entrySet();
+        Iterator<Map.Entry<String, Charset>> iterator = entries.iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, Charset> next = iterator.next();
+            log.info("key:" + next.getKey());
+            log.info("name:" + next.getValue().name());
+        }
 
     }
 
