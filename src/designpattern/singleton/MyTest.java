@@ -5,10 +5,7 @@ import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
+import java.util.*;
 
 /**
  * @description
@@ -19,15 +16,7 @@ import java.util.SortedMap;
 public class MyTest {
 
     public static void main(String[] args){
-        SortedMap<String, Charset> stringCharsetSortedMap = Charset.availableCharsets();
 
-        Set<Map.Entry<String, Charset>> entries = stringCharsetSortedMap.entrySet();
-        Iterator<Map.Entry<String, Charset>> iterator = entries.iterator();
-        while (iterator.hasNext()){
-            Map.Entry<String, Charset> next = iterator.next();
-            log.info("key:" + next.getKey());
-            log.info("name:" + next.getValue().name());
-        }
 
     }
 
@@ -38,6 +27,35 @@ public class MyTest {
             System.out.println(bytes[i]);
         }
         System.out.println(new String(bytes, Charset.forName("GBK")));
+    }
+
+    @Test
+    public void mapEntryTest() {
+        SortedMap<String, Charset> stringCharsetSortedMap = Charset.availableCharsets();
+
+        Set<Map.Entry<String, Charset>> entries = stringCharsetSortedMap.entrySet();
+        Iterator<Map.Entry<String, Charset>> iterator = entries.iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, Charset> next = iterator.next();
+            log.info("key:" + next.getKey());
+            log.info("name:" + next.getValue().name());
+        }
+    }
+
+    @Test
+    public void quickSortTest() {
+
+        Random random = new Random();
+        int[]  ints   = new int[22];
+        for(int i = 0; i < 22; i++){
+            ints[i] = random.nextInt(6);
+        }
+        Arrays.stream(ints).forEach(i -> System.out.print(" " + i));
+
+
+        Arrays.stream(this.arrayQuickSort(ints)).forEach(i -> System.out.print(" " + i));
+
+
     }
 
 
@@ -57,27 +75,43 @@ public class MyTest {
             int pivotIndex = numbers.length - 1;
             int leftIndex  = 0;
             int rightIndex = numbers.length - 2;
-            while (numbers[leftIndex] < numbers[pivotIndex] && leftIndex < pivotIndex){
-                leftIndex ++;
-                if(leftIndex == pivotIndex){
-                    return combineArrays(arrayQuickSort(divideArray(numbers,0, pivotIndex)), new int[]{numbers[pivotIndex]});
-                }
-            }
             while (leftIndex < rightIndex){
-                if(numbers[rightIndex] < numbers[pivotIndex]){
-                    int temp = numbers[rightIndex];
-                    numbers[rightIndex] = numbers[leftIndex];
-                    numbers[leftIndex] = temp;
+                while (numbers[leftIndex] < numbers[pivotIndex]){
+                    if(leftIndex == pivotIndex){
+                        return combineArrays(arrayQuickSort(divideArray(numbers,0, pivotIndex)),
+                                new int[]{numbers[pivotIndex]});
+                    }
+                    leftIndex ++;
                 }
-                rightIndex --;
-            }
-            if(leftIndex == rightIndex){
-                if(numbers[leftIndex] > numbers[pivotIndex]){
-                    return new int[]{};
+                while (rightIndex > leftIndex){
+                    if(numbers[rightIndex] < numbers[pivotIndex]){
+                        int temp = numbers[rightIndex];
+                        numbers[rightIndex] = numbers[leftIndex];
+                        numbers[leftIndex] = temp;
+                        leftIndex ++;
+                        rightIndex--;
+                        break;
+                    }
+                    rightIndex--;
                 }
-            }
 
-            return arrayQuickSort(numbers);
+            }
+            //左右两个 index 相遇，pivot 与其交换并分割两边的数组
+            int temp = numbers[rightIndex];
+            numbers[rightIndex] = numbers[pivotIndex];
+            numbers[pivotIndex] = temp;
+            if(rightIndex == 0){
+                return combineArrays(new int[]{numbers[0]}, arrayQuickSort(
+                        divideArray(numbers, 1, numbers.length)));
+            }else if(rightIndex == numbers.length -1) {
+                return combineArrays(arrayQuickSort(
+                        divideArray(numbers, 0, numbers.length - 1)),
+                        new int[]{numbers[numbers.length -1]});
+            }else {
+                return combineArrays(combineArrays(arrayQuickSort(divideArray(numbers, 0, rightIndex)),
+                        new int[]{numbers[rightIndex]}),
+                        arrayQuickSort(divideArray(numbers, rightIndex + 1, numbers.length)));
+            }
         }
 
     }
@@ -92,7 +126,7 @@ public class MyTest {
      */
     int[] combineArrays(int[] array1, int[] array2){
         if(array1.length == 0 || array2.length == 0){
-            throw new IllegalArgumentException("Invalid array parameter: " + array1 + "; " + array2);
+            throw new IllegalArgumentException("Invalid array parameter: " + array1.toString() + "; " + array2.toString());
         }
         int   length      = array1.length + array2.length;
         int[] result = new int[length];
