@@ -27,7 +27,6 @@ public class QuickSort {
         System.out.println("");
         Arrays.stream(this.arrayQuickSort(ints)).forEach(i -> System.out.print(" " + i));
 
-
     }
 
 
