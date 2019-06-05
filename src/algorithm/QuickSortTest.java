@@ -11,6 +11,10 @@ import java.util.Random;
  */
 public class QuickSortTest {
 
+
+    private static final int TWO_ELEMENTS_ARRAY_LENGTH = 2;
+
+
     /**
      * @author  KangShan
      * @params  []
@@ -47,7 +51,7 @@ public class QuickSortTest {
             return numbers;
         }else if(numbers.length == 0){
             throw new IllegalArgumentException("Invalid array: which length is zero.");
-        }else if(numbers.length == 2){
+        }else if(numbers.length == TWO_ELEMENTS_ARRAY_LENGTH){
             if(numbers[0] <= numbers[1]){
                 return numbers;
             }else {
