@@ -54,9 +54,9 @@ public class QuickSort {
             int leftIndex  = 0;
             int rightIndex = numbers.length - 2;
             while (leftIndex <= rightIndex ){
-                //此层循环需要做到让左右两个 索引相遇
+                //此层循环需要做到让左右两个 索引相遇或错过
 
-                //
+                //如果两个左右两个 index 相遇且满足条件直接跳出循环交换 pivot 与左值
                 if(leftIndex == rightIndex && numbers[leftIndex] >= numbers[pivotIndex]){
                     break;
                 }
@@ -81,7 +81,7 @@ public class QuickSort {
                 }
 
             }
-            //左右两个 index 相遇，pivot 与其交换并分割两边的数组
+            //左右两个 index 相遇或越过了，pivot 与左值交换并分割两边的数组
             int temp = numbers[leftIndex];
             numbers[leftIndex] = numbers[pivotIndex];
             numbers[pivotIndex] = temp;
