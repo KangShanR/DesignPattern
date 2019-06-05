@@ -5,7 +5,11 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Random;
 
-public class QuickSort {
+/**
+ * @author KangShan
+ * @date 2019/6/5 11:48
+ */
+public class QuickSortTest {
 
     /**
      * @author  KangShan
