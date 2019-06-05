@@ -42,40 +42,62 @@ public class MyTest {
         }
     }
 
+    /**
+     * @author  KangShan
+     * @params  []
+     * @return  void
+     * @date    2019/6/5 10:27
+     */
     @Test
     public void quickSortTest() {
 
         Random random = new Random();
-        int[]  ints   = new int[22];
-        for(int i = 0; i < 22; i++){
-            ints[i] = random.nextInt(6);
+        int arrayLength = 44;
+        int[]  ints   = new int[arrayLength];
+        for(int i = 0; i < arrayLength; i++){
+            ints[i] = random.nextInt(32);
         }
+//        ints = new int[]{112, 32, 1, 33};
+//        ints = new int[]{13, 30, 19, 13};
         Arrays.stream(ints).forEach(i -> System.out.print(" " + i));
-
-
+        System.out.println("");
         Arrays.stream(this.arrayQuickSort(ints)).forEach(i -> System.out.print(" " + i));
 
 
     }
 
 
+    /**
+     *
+     * @author  KangShan
+     * @params  [numbers, str]
+     * @return  int[]
+     * @date    2019/6/5 10:21
+     */
     int[] arrayQuickSort(int[] numbers){
 
         if(numbers.length == 1){
             return numbers;
         }else if(numbers.length == 0){
-            throw new IllegalArgumentException("参数错误");
+            throw new IllegalArgumentException("Invalid array: which length is zero.");
         }else if(numbers.length == 2){
             if(numbers[0] <= numbers[1]){
                 return numbers;
             }else {
                 return new int[]{numbers[1], numbers[0]};
             }
-        }else {
+        }else {//数组长度超过 2
             int pivotIndex = numbers.length - 1;
             int leftIndex  = 0;
             int rightIndex = numbers.length - 2;
-            while (leftIndex < rightIndex){
+            while (leftIndex <= rightIndex ){
+                //此层循环需要做到让左右两个 索引相遇
+
+                //
+                if(leftIndex == rightIndex && numbers[leftIndex] >= numbers[pivotIndex]){
+                    break;
+                }
+
                 while (numbers[leftIndex] < numbers[pivotIndex]){
                     if(leftIndex == pivotIndex){
                         return combineArrays(arrayQuickSort(divideArray(numbers,0, pivotIndex)),
@@ -97,20 +119,20 @@ public class MyTest {
 
             }
             //左右两个 index 相遇，pivot 与其交换并分割两边的数组
-            int temp = numbers[rightIndex];
-            numbers[rightIndex] = numbers[pivotIndex];
+            int temp = numbers[leftIndex];
+            numbers[leftIndex] = numbers[pivotIndex];
             numbers[pivotIndex] = temp;
-            if(rightIndex == 0){
+            if(leftIndex == 0){
                 return combineArrays(new int[]{numbers[0]}, arrayQuickSort(
                         divideArray(numbers, 1, numbers.length)));
-            }else if(rightIndex == numbers.length -1) {
+            }else if(leftIndex == numbers.length -1) {
                 return combineArrays(arrayQuickSort(
                         divideArray(numbers, 0, numbers.length - 1)),
                         new int[]{numbers[numbers.length -1]});
             }else {
-                return combineArrays(combineArrays(arrayQuickSort(divideArray(numbers, 0, rightIndex)),
-                        new int[]{numbers[rightIndex]}),
-                        arrayQuickSort(divideArray(numbers, rightIndex + 1, numbers.length)));
+                return combineArrays(combineArrays(arrayQuickSort(divideArray(numbers, 0, leftIndex)),
+                        new int[]{numbers[leftIndex]}),
+                        arrayQuickSort(divideArray(numbers, leftIndex + 1, numbers.length)));
             }
         }
 
@@ -154,7 +176,7 @@ public class MyTest {
         if(length == 0){
             throw new IllegalArgumentException("Invalid array: array's length is 0.");
         }
-        if(startIndex < 0 || startIndex > length -1 || endIndex < 0 || endIndex > length -1){
+        if(startIndex < 0 || startIndex > length -1 || endIndex < 0){
             throw new IndexOutOfBoundsException("Array's index out of bounds");
         }
         if(endIndex < startIndex){
