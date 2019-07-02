@@ -27,7 +27,7 @@ public class QuickSortTest {
         int    arrayLength = 44;
         int[]  ints        = new int[arrayLength];
         for(int i = 0; i < arrayLength; i++){
-            ints[i] = random.nextInt(32);
+            ints[i] = random.nextInt(23);
         }
 //        ints = new int[]{112, 32, 1, 33};
 //        ints = new int[]{13, 30, 19, 13};
