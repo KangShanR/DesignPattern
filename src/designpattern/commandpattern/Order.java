@@ -10,5 +10,10 @@ package designpattern.commandpattern;
  */
 public interface Order {
 
-	void excute();
+	/**
+	 * 执行命令
+	 * @author  KangShan
+	 * @date    2019/7/2 17:43
+	 */
+	void execute();
 }

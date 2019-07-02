@@ -23,7 +23,7 @@ public class Broker {
 		orders.add(new SellStock(1,stock));
 //		遍历命令链，并依次执行各个命令
 		for(Order order:orders){
-			order.excute();
+			order.execute();
 		}
 		orders.clear();
 	}

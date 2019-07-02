@@ -9,7 +9,7 @@ package designpattern.commandpattern;
  */
 public class BuyStock implements Order {
 
-//	购买购票数量
+	/**	购买购票数量 */
 	private int quantity;
 	private Stock stock;
 	
@@ -26,10 +26,8 @@ public class BuyStock implements Order {
 		this.stock = stock;
 	}
 
-	/* (non-Javadoc)
-	 */
 	@Override
-	public void excute() {
+	public void execute() {
 		this.stock.setQuantity(this.stock.getQuantity()+this.quantity);
 		System.out.println("BuyStock:"+this.stock.getName()+"  quantity:"+this.quantity+"  result:"+this.stock.getQuantity());
 	}

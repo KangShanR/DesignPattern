@@ -24,10 +24,8 @@ public class SellStock implements Order {
 		this.stock = stock;
 	}
 
-	/* (non-Javadoc)
-	 */
 	@Override
-	public void excute() {
+	public void execute() {
 		this.stock.setQuantity(this.stock.getQuantity()-this.quantity);
 		System.out.println("SellStock:"+this.stock.getName()+"  quantity:"+ this.quantity +"  result:"+this.stock.getQuantity());
 	}
