@@ -37,7 +37,12 @@ public class Broker {
     }
 
 
-    //	测试
+    /**
+     *
+     * @author  KangShan
+     * @param   args nothing
+     * @date    2019/7/8 10:00
+     */
     public static void main(String[] args) {
         Broker broker = new Broker();
     }
