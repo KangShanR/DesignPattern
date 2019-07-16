@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -44,7 +45,16 @@ public class Broker {
      * @date    2019/7/8 10:00
      */
     public static void main(String[] args) {
-        Broker broker = new Broker();
+//        Broker broker = new Broker();
+        final List<String> list = new ArrayList();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+
+        log.info(list.toString());
+        list.remove(2);
+        log.info(list.toString());
     }
 
 }
