@@ -45,16 +45,15 @@ public class Broker {
      * @date    2019/7/8 10:00
      */
     public static void main(String[] args) {
-//        Broker broker = new Broker();
-        final List<String> list = new ArrayList();
-        list.add("A");
-        list.add("B");
-        list.add("C");
-        list.add("D");
-
-        log.info(list.toString());
-        list.remove(2);
-        log.info(list.toString());
+        Broker broker = new Broker();
+        log.info(String.valueOf(broker.index));
+        Broker b = new Broker();
+        b= broker;
+        b.stock = new Stock(1, "dfsdfd");
+        log.info(String.valueOf(b.stock.getName()));
+        b.index = 44;
+        log.info(String.valueOf(broker.stock.getName()));
+        log.info(String.valueOf(b.index == (broker.index)));
     }
 
 }
