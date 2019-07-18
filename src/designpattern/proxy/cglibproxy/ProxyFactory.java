@@ -27,12 +27,12 @@ public class ProxyFactory implements MethodInterceptor{
 		System.out.println("开始事务拦截。。。。。。。。");
 		Object result = method.invoke(target, args);
 		System.out.println("结束事务拦截。。。。。。。。");
-		return result ;
+		return result;
 	}
 	
 	/**
 	 * 获取代理的方法
-	 * @return
+	 * @return Object
 	 */
 	Object getProxyIns(){
 		//增强工具

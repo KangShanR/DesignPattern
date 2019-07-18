@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 import org.springframework.cglib.proxy.Enhancer;
 
 /**
- * @author Administrator
+ * @author ks
  *
  */
 public class InvokeHandler implements InvocationHandler {
@@ -27,9 +27,9 @@ public class InvokeHandler implements InvocationHandler {
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		System.out.println("invoke.start....");
-		Object resultValue = method.invoke(obj, args);
+		Object result = method.invoke(obj, args);
 		System.out.println("invoke.end....");
-		return resultValue;
+		return result;
 	}
 
 }

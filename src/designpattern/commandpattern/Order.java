@@ -10,5 +10,4 @@ package designpattern.commandpattern;
  */
 public interface Order {
 
-	void excute();
 }
