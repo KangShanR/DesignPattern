@@ -7,10 +7,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 
+import javax.management.ImmutableDescriptor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Administrator
@@ -45,15 +49,26 @@ public class Broker {
      * @date    2019/7/8 10:00
      */
     public static void main(String[] args) {
-        Broker broker = new Broker();
-        log.info(String.valueOf(broker.index));
-        Broker b = new Broker();
-        b= broker;
-        b.stock = new Stock(1, "dfsdfd");
-        log.info(String.valueOf(b.stock.getName()));
-        b.index = 44;
-        log.info(String.valueOf(broker.stock.getName()));
-        log.info(String.valueOf(b.index == (broker.index)));
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+        integers.stream().peek(System.out::println).map(int[]::new).peek(a -> System.out.println(a.length)).count();
+        byte i = 'z';
+        System.out.println(i);
+        Integer integer = Integer.MAX_VALUE + 1;
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(integer);
+    }
+
+    @Test
+    public void peekTest(){
+        Stream.of("one", "two", "three", "four")
+            .filter(e -> e.length() > 3)
+            .peek(e -> System.out.println("Filtered value: " + e))
+            .map(String::toUpperCase)
+            .peek(e -> System.out.println("Mapped value: " + e))
+            .collect(Collectors.toList());
     }
 
 }
