@@ -15,14 +15,26 @@ import java.util.*;
 @Slf4j
 public class MyTest {
 
+    /**
+     * @author KangShan
+     * @return void
+     * @see // FIXME: 2019/7/27
+     * @date 2019/7/27
+     * @param args
+     */
     public static void main(String[] args){
+        System.out.println(args.length);
+        Arrays.stream(args).forEach(System.out::println);
+        final String s;
+        s = "dfd";
 
+        System.getProperties().list(System.out);
 
     }
 
     @Test
     public void getBytesTest() throws UnsupportedEncodingException {
-        byte[] bytes = "abc123我".getBytes("GBK");
+        byte[] bytes = "abc123".getBytes("GBK");
         for(int i = 0; i < bytes.length; i++){
             System.out.println(bytes[i]);
         }
