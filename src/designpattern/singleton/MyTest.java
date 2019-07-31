@@ -23,12 +23,28 @@ public class MyTest {
      * @param args
      */
     public static void main(String[] args){
-        System.out.println(args.length);
-        Arrays.stream(args).forEach(System.out::println);
-        final String s;
-        s = "dfd";
+//        System.out.println(args.length);
+//        Arrays.stream(args).forEach(System.out::println);
+//        final String s;
+//        s = "dfd";
+//
+//        System.getProperties().list(System.out);
 
-        System.getProperties().list(System.out);
+        Integer integer = new Integer(33);
+        Integer integer2 = new Integer(33);
+        System.out.println(integer == integer2);
+
+        long a = 200;
+        float b = 1.34e34f;
+        double c = 1.314e22;
+
+        short s = 033;
+        System.out.println(s);
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+
+        System.out.println(Integer.toUnsignedString(s,4));
 
     }
 
