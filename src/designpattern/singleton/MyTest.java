@@ -15,10 +15,6 @@ import java.util.*;
 @Slf4j
 public class MyTest {
 
-    public static void main(String[] args){
-
-
-    }
 
     @Test
     public void getBytesTest() throws UnsupportedEncodingException {
@@ -42,5 +38,37 @@ public class MyTest {
         }
     }
 
+    void test1() {
+        System.out.println("test1 start");
+        try {
+            System.out.println("test1 execute");
+            Thread.sleep(3000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("test1 end");
+    }
+
+    void test2() {
+        System.out.println("test2 start");
+        try {
+            System.out.println("test2 execute");
+            Thread.sleep(100L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("test2 end");
+    }
+
+
+    public static void main(String[] args){
+        final MyTest t = new MyTest();
+
+        new Thread(() -> t.test1()).start();
+        new Thread(() -> t.test2()).start();
+
+
+    }
+    
 
 }
