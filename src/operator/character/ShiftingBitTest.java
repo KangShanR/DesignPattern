@@ -52,8 +52,11 @@ public class ShiftingBitTest {
         System.out.println("-----------------");
         int in;
         in = Integer.MAX_VALUE + 1;
+        long ll = Integer.MAX_VALUE * 2 * 3;
+        System.out.println(ll);
         System.out.println(Integer.MAX_VALUE);
-        System.out.println(in);
-        Iterable<Integer> ints;
+        System.out.println(Integer.MIN_VALUE - 1 == Integer.MAX_VALUE);
+        System.out.println(Integer.toBinaryString(~1));
+        System.out.println(Integer.toBinaryString(1));
     }
 }
