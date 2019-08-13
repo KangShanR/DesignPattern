@@ -12,7 +12,7 @@ public class ShiftingBitTest {
      * 1. `<<` 左移，左移运算，符号位不变。也就是不管是正数还是负数，其符号位应该一直保持不变。
      * 2. 右移运算分两种：
      *      1. 有符号右移 `>>` 根据其符号位来，如果符号位是 1 ，则在前位填 1，如果符号位是 0 ，将在前位填 0
-     *      2. 无符号右移 `>>>`
+     *      2. 无符号右移 `>>>` 直接在高位填 0 ，负数会直接转为正数
      */
 
     public static void main(String[] args){
@@ -27,7 +27,8 @@ public class ShiftingBitTest {
         int j = -1;
         System.out.println(Integer.toBinaryString(j));
         System.out.println(j);
-        System.out.println(Integer.toBinaryString(j>>10));
+        System.out.println(Integer.toBinaryString(j>>=10));
+        System.out.println(j);
         System.out.println(Integer.toBinaryString(j>>>=10));
         System.out.println(j);
         System.out.println(Integer.toBinaryString(j<<=10));
@@ -49,7 +50,7 @@ public class ShiftingBitTest {
         System.out.println((int)m);
         System.out.println(k);
 
-        System.out.println("-----------------");
+        System.out.println("bit overflow -----------------");
         int in;
         in = Integer.MAX_VALUE + 1;
         long ll = Integer.MAX_VALUE * 2 * 3;
@@ -57,6 +58,6 @@ public class ShiftingBitTest {
         System.out.println(Integer.MAX_VALUE);
         System.out.println(Integer.MIN_VALUE - 1 == Integer.MAX_VALUE);
         System.out.println(Integer.toBinaryString(~1));
-        System.out.println(Integer.toBinaryString(1));
+        System.out.println(Integer.toBinaryString(1^1));
     }
 }
