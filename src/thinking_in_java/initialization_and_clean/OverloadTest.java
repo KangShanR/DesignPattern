@@ -1,9 +1,6 @@
-package thinking_in_java.initianize_and_clean;
+package thinking_in_java.initialization_and_clean;
 
-import jdk.net.SocketFlow;
 import lombok.NoArgsConstructor;
-
-import java.util.stream.Stream;
 
 /**
  * @author KangShan
