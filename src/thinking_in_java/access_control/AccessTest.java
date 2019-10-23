@@ -12,10 +12,10 @@ import java.io.PrintStream;
  * @date 2019/10/23 21:26
  */
 @Slf4j
-public class AccessTest {
-    static char C = 100;
+class AccessTest {
+    public static char C = 100;
 
-    private int count;
+    int count;
 
     private AccessTest(int i){
         this.count = i;

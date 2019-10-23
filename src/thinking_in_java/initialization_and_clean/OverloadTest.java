@@ -1,6 +1,7 @@
 package thinking_in_java.initialization_and_clean;
 
 import lombok.NoArgsConstructor;
+//import thinking_in_java.access_control.AccessTest;
 
 /**
  * @author KangShan
@@ -37,5 +38,10 @@ public class OverloadTest {
          * 而非静态成员的初始化却要第一个实例初始化时才会执行到 */
         System.out.println("main end ...");
 
+
+        /**
+         * default package access
+         */
+//        System.out.println(AccessTest.C);
     }
 }
