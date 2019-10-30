@@ -21,6 +21,18 @@ class AccessTest {
         this.count = i;
     }
 
+    static {//executed first of all
+        System.out.println("static block");
+    }
+
+    {
+        count = 44;
+        System.out.println(count);
+        System.out.println("block44");
+    }
+
+
+
     public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Hello");
         System.out.printf("hello", OverloadTest.class)
@@ -28,7 +40,13 @@ class AccessTest {
                 .printf(", can you hear me?")
                 .flush();
 
+        AccessTest accessTest = new AccessTest(1);
+        System.out.println(accessTest.count);
+
         System.out.println(Integer.toBinaryString(223));
+
+        OverloadTest overloadTest = new OverloadTest();
+        //result: 各个类中的静态块会先执行，但在未访问到其他类的实例或静态代码前，其静态代码并不会执行。
 
         PrintStream printStream = new PrintStream("S");
     }

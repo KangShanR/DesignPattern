@@ -10,6 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OverloadTest {
 
+    static {
+        System.out.println("overloadtest static codes block!");
+    }
+
     public OverloadTest(String i){
         System.out.println(i);
     }
