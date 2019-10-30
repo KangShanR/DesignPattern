@@ -4,8 +4,10 @@ package thinking_in_java.access_control;
 import lombok.extern.slf4j.Slf4j;
 import thinking_in_java.initialization_and_clean.OverloadTest;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.nio.channels.OverlappingFileLockException;
 
 /**
  * @author KangShan
@@ -34,8 +36,9 @@ class AccessTest extends OverloadTest{
 //        System.out.println("block44");
 //    }
 
-    protected void byteOverloadTest(byte c){
-        System.out.println("AccessTest: " + c);
+//    @Override
+    public void byteOverloadTest(char c){
+        System.out.println("Access char : " + c);
     }
 
     protected String byteOverloadTest(byte c, int i){
@@ -44,8 +47,14 @@ class AccessTest extends OverloadTest{
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        new AccessTest(3);
-//        System.out.println(OverloadTest.s);
+        /**
+         * 此处证明:对于一个对象的使用最终是看其构造实例过程，而不是其接收的类型
+         */
+//        AccessTest accessTest = new AccessTest(3);
+//        accessTest.byteOverloadTest('q');
+        OverloadTest overload = new AccessTest('1');
+        overload.byteOverloadTest('q');
+        System.out.println(OverloadTest.s);
 
 //        System.out.println("Hello");
 //        System.out.printf("hello", OverloadTest.class)

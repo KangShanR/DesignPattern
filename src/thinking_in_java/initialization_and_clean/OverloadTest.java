@@ -22,11 +22,11 @@ public class OverloadTest {
         System.out.println("OverLoad：" + i);
     }
 
-//    protected void byteOverloadTest(char c){
-//        System.out.println("byte to char : " + c);
-//    }
-//    void byteOverloadTest(int c){
-//        System.out.println("byte to char : " + c);
+    public void byteOverloadTest(char c){
+        System.out.println("Overload char : " + c);
+    }
+//    protected void byteOverloadTest(int c){
+//        System.out.println("Overload int : " + c);
 //    }
 //    void byteOverloadTest(short c){
 //        System.out.println("byte to char : " + c);
