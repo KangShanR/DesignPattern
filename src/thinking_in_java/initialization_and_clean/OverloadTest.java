@@ -1,6 +1,8 @@
 package thinking_in_java.initialization_and_clean;
 
 import lombok.NoArgsConstructor;
+
+import java.io.FileNotFoundException;
 //import thinking_in_java.access_control.AccessTest;
 
 /**
@@ -10,25 +12,27 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OverloadTest {
 
-    static {
-        System.out.println("overloadtest static codes block!");
-    }
+    protected static String s;
+
+//    static {
+//        System.out.println("overloadtest static codes block!");
+//    }
 
     public OverloadTest(String i){
-        System.out.println(i);
+        System.out.println("OverLoad：" + i);
     }
 
-    void byteOverloadTest(char c){
-        System.out.println("byte to char : " + c);
-    }
-    void byteOverloadTest(int c){
-        System.out.println("byte to char : " + c);
-    }
-    void byteOverloadTest(short c){
-        System.out.println("byte to char : " + c);
-    }
+//    protected void byteOverloadTest(char c){
+//        System.out.println("byte to char : " + c);
+//    }
+//    void byteOverloadTest(int c){
+//        System.out.println("byte to char : " + c);
+//    }
+//    void byteOverloadTest(short c){
+//        System.out.println("byte to char : " + c);
+//    }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
 //        System.out.println("bcd".getBytes()[0]);
 //        Stream.of("bcd".getBytes()).forEach(System.out::println);
 //        byte b = "b".getBytes()[0];
