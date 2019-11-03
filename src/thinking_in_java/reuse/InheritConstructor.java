@@ -1,5 +1,7 @@
 package thinking_in_java.reuse;
 
+import lombok.Getter;
+
 /**
  * 继承测试
  * @author KangShan
@@ -15,12 +17,13 @@ public class InheritConstructor extends Inherited{
         System.out.println("InheritConstructor .......");
     }
 
-    int i = 1;
+    @Getter
+    Integer i = 1;
     int j = i;
     int k = 0;
 
     public static void main(String[] args){
-
+        System.out.println(new InheritConstructor().getI());
         /**
          * 使用实例引用句静态成员引起的错误，
          * 静态方法的调用忽略其表达式部分而导致此处并不会抛出 NollPointerException

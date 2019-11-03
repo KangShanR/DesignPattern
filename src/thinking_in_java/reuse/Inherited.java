@@ -1,5 +1,6 @@
 package thinking_in_java.reuse;
 
+import lombok.Generated;
 import lombok.Getter;
 
 /**
@@ -10,6 +11,9 @@ public class Inherited {
 
     @Getter
     private Integer count;
+
+    @Getter
+    Integer i = 0;
 
     /**
      * executed before constructor
