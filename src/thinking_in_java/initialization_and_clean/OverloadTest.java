@@ -43,7 +43,8 @@ public class OverloadTest {
         System.out.println(StaticClassInitialization.staticOverLoad);
         /* 此处证明，静态代码的执行是只要首次执行到 class 的代码，不管是静态成员块的执行还是实例的初始化，
          * 都会先执行静态成员代码。
-         * 而非静态成员的初始化却要第一个实例初始化时才会执行到 */
+         * 而非静态成员的初始化却要第一个实例初始化时才会执行到
+         */
         System.out.println("main end ...");
 
 
