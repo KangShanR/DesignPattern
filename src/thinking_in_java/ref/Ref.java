@@ -1,4 +1,4 @@
-package thinkinginjava.ref;
+package thinking_in_java.ref;
 
 import java.util.Arrays;
 

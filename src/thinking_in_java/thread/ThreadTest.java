@@ -1,4 +1,4 @@
-package thread;
+package thinking_in_java.thread;
 
 /**
  * @author KangShan

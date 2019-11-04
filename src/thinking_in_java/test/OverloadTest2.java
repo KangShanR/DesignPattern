@@ -1,4 +1,4 @@
-package thinkinginjava.initianizeandclean;
+package thinking_in_java.test;
 
 import java.util.stream.Stream;
 
@@ -6,7 +6,7 @@ import java.util.stream.Stream;
  * @author KangShan
  * @date 2019/8/12 19:50
  */
-public class OverloadTest {
+public class OverloadTest2 {
 
     void byteOverloadTest(char c){
         System.out.println("byte to char : " + c);
@@ -22,6 +22,6 @@ public class OverloadTest {
         System.out.println("bcd".getBytes()[0]);
         Stream.of("bcd".getBytes()).forEach(System.out::println);
         byte b = "b".getBytes()[0];
-        new OverloadTest().byteOverloadTest(b);
+        new OverloadTest2().byteOverloadTest(b);
     }
 }
