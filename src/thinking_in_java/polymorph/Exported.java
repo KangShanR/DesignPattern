@@ -6,9 +6,12 @@ package thinking_in_java.polymorph;
  */
 public class Exported extends Base {
     int amount = 1;
+    Exported(){
+        System.out.println("Exported constructor. amount:" + amount);
+    }
     @Override
     void base(){
-        System.out.println("exported");
+        System.out.println("exported " + amount);
     }
     void basePrivate(){
         System.out.println("exported private");

@@ -5,7 +5,10 @@ package thinking_in_java.polymorph;
  * @date 2019/11/9 23:15
  */
 public class Base {
-    int amount = 0;
+    int amount = 52;
+    Base(){
+        this.base();
+    }
     void basePrint(){
 //        System.out.println("base print");
         base();
@@ -16,7 +19,7 @@ public class Base {
     }
 
     void base(){
-        System.out.println("base");
+        System.out.println("base.base(); amount: " + amount);
 //        basePrint();
     }
 
