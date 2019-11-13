@@ -6,6 +6,19 @@ package thinking_in_java.polymorph;
  */
 public class Test {
     public static void main(String[] args) {
-        new Exported();
+        /**
+         * downcast & RTTI
+         */
+        Base base = new Base();
+        Exported exported = new Exported();
+        Base[] bases = {base, exported};
+
+        System.out.println("base method print:");
+        bases[0].base();
+        bases[1].base();
+
+        System.out.println("base private method print:");
+        ((Exported)bases[1]).basePrivate();
+        ((Exported)bases[0]).basePrivate();
     }
 }
