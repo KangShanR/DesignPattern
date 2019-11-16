@@ -1,16 +1,18 @@
 package designpattern.adapterpattern;
 
-public class Adapter extends Adaptee implements Target {
+/**
+ * the adapter
+ * @author KangShan
+ * @date 2019/11/17 0:30
+ */
+public class Adapter implements Target {
 
-
-	@Override
-	public void run() {
-		super.run();
-		System.out.println("Adapter.run.......");
-	}
+    Adaptee adaptee = new Adaptee();
 
 	@Override
 	public void fly() {
-		System.out.println("Adapter.fly...........");
+        System.out.println("First, adaptee running ...");
+        adaptee.run();
+	    System.out.println("Then, let the adaptee fly...........");
 	}
 }
