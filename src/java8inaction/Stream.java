@@ -12,7 +12,13 @@ public class Stream implements List {
         List<Integer> integers = Arrays.asList(1, 3, 23, 2, 34);
         integers.stream().collect(
                 Collectors.toMap(HashMap:: new, Integer::byteValue));
-        Map<Boolean, List<Integer>> collect = integers.stream().collect(Collectors.groupingBy(i -> i > 0));
+        Map<Boolean, List<Integer>> collect =
+                integers.stream().collect(Collectors.groupingBy(i -> i > 0));
+
+        /**
+         * 实现类可以直接调用接口的默认方法
+         */
+        new Stream().sort(Comparator.naturalOrder());
     }
 
     @Override
