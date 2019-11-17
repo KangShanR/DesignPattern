@@ -1,12 +1,12 @@
-package thinking_in_java._interface_.abstruct_class_and_interface;
+package thinking_in_java._interface.abstruct_class_and_interface;
 
 /**
  * @author KangShan
  * @date 2019/11/13 23:28
  */
 public class SubClass extends AbstractClass {
+    public static int i = 3;
 
-    int i = 3;
     @Override
     void print() {
         System.out.println("subclass print i : " + i);

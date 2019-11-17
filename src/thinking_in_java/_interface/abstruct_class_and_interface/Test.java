@@ -1,4 +1,4 @@
-package thinking_in_java._interface_.abstruct_class_and_interface;
+package thinking_in_java._interface.abstruct_class_and_interface;
 
 /**
  * @author KangShan

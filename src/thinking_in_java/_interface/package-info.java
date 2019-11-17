@@ -1,4 +1,4 @@
-package thinking_in_java._interface_;
+package thinking_in_java._interface;
 
 
 /**
