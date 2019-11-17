@@ -7,13 +7,28 @@ package thinking_in_java.innerclass;
 public class Outer {
     class Inner {
 
+        Outer getOuter(){
+//            return Outer.this;
+            return null;
+        }
     }
 
+    /**
+     * show the method code of getting the outer object's reference
+     * & new a inner object on a outer object
+     * @return
+     */
     Inner getInner(){
-        return new Inner();
+        Outer.this.toString();
+        return this.new Inner();
     }
 
     public static void main(String[] args) {
-        Inner inner = new Outer().getInner();
+        Outer outer = new Outer();
+        Inner inner = outer.getInner();
+
+        System.out.println(inner);
+        System.out.println(inner.getOuter());
+        System.out.println(inner.getOuter() == outer);
     }
 }

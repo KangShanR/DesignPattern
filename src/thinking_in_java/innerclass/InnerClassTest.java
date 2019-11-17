@@ -6,7 +6,8 @@ package thinking_in_java.innerclass;
  */
 public class InnerClassTest {
     public static void main(String[] args) {
-        Outer.Inner inner = new Outer().getInner();
+        Outer       outer = new Outer();
+        Outer.Inner inner = outer.getInner();
         System.out.println(inner);
     }
 }

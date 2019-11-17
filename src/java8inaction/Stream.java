@@ -16,9 +16,21 @@ public class Stream implements List {
                 integers.stream().collect(Collectors.groupingBy(i -> i > 0));
 
         /**
-         * 实现类可以直接调用接口的默认方法
+         * 实现类可以直接调用接口的默认方法,
+         * 同时，默认方法也可以被实现类给复写。
          */
         new Stream().sort(Comparator.naturalOrder());
+    }
+
+    /***
+     * As a default method defined in interface, it could be override in class
+     *
+     * @author  KangShan
+     * @date    2019/11/17 20:37
+     */
+    @Override
+    public void sort(Comparator c) {
+
     }
 
     @Override

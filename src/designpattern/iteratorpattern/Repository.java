@@ -2,7 +2,7 @@ package designpattern.iteratorpattern;
 
 public class Repository implements Container {
 
-	String elements[] = {"kfc","jfk","mcd"};
+	String[] elements = {"kfc", "jfk", "mcd"};
 	
 	/**
 	 * 返回内部类的对象，注意这儿的依赖倒置
@@ -26,13 +26,16 @@ public class Repository implements Container {
 		 */
 		@Override
 		public boolean hasNext() {
-			if(index < elements.length)
+			if(index < elements.length){
 				return true;
+			}
 			return false;
 		}
 
 		/**
-		 * 实现迭代器核心算法，如果后面还有元素就返回这个元素，最后的结果就是index会与集合的长度相等，索引指向最后的一个的后面
+		 * 实现迭代器核心算法，如果当前索引指向集合内的元素就返回这个元素，
+         * 同时索引向后移动一个单位。
+		 * 最后的结果就是index会与集合的长度相等，索引指向最后的一个的后面
 		 */
 		@Override
 		public Object next() {
