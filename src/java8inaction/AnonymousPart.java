@@ -8,13 +8,13 @@ public class AnonymousPart {
     final int value = 10;
     void doIt(){
         int value = 6;
-        Runnable runnable = new Runnable() {
-            final int value = 5;
-            @Override
-            public void run() {
-                int value = 4;
-                System.out.println(this.value);
-            }
+        /**
+         * 实现一个 Runnable 并没有创建线程（创建线程要用 Thread），
+         * 这儿能跑起来是在 main 方法中调用的原因
+         */
+        Runnable runnable = () -> {
+            final int value1 = 5;
+            System.out.println(value1);
         };
         runnable.run();
     }

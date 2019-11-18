@@ -5,11 +5,17 @@ package thinking_in_java.innerclass;
  * @date 2019/11/17 19:08
  */
 public class Outer {
+    {
+        System.out.println("out initialize");
+    }
+    Outer(){
+        System.out.println("outer construct");
+    }
     class Inner {
 
         Outer getOuter(){
-//            return Outer.this;
-            return null;
+            return Outer.this;
+//            return null;
         }
     }
 
