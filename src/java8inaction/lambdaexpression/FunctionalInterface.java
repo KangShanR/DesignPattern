@@ -1,11 +1,20 @@
 package java8inaction.lambdaexpression;
 
+import thinking_in_java.reuse.ObjectInitialization;
+
 /**
  * @author KangShan
  * @date 2019/11/19 1:51
  */
 public interface FunctionalInterface {
-    boolean test();
+    /**
+     * test for method reference in constructor
+     * @param i
+     * @param j
+     * @param o
+     * @return
+     */
+    FunctionalInterfaceTest test(int i, String j, Object o);
 
     static void main(String[] args) {
 
