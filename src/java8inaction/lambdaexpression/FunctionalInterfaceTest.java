@@ -1,6 +1,7 @@
 package java8inaction.lambdaexpression;
 
 import java.util.Arrays;
+import java.util.function.Function;
 
 /**
  * @author KangShan
