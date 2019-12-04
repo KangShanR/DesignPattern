@@ -16,7 +16,7 @@ public class SpliteratorTest {
 //        Arrays.stream(split).forEach(System.out::println);
         System.out.println(
                 IntStream.range(0, str.length()).mapToObj(str::charAt)
-                .parallel()
+//                .parallel()
                 .reduce(
                         new WordCounter(0, true),
                         WordCounter::accumulator,

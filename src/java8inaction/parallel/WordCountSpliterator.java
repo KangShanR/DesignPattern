@@ -19,7 +19,8 @@ public class WordCountSpliterator implements Spliterator<Character> {
     @Override
     public boolean tryAdvance(Consumer<? super Character> action) {
         action.accept(str.charAt(currentChar));
-        return currentChar < str.length();
+
+        return currentChar++ < str.length() - 1;
     }
 
     @Override
