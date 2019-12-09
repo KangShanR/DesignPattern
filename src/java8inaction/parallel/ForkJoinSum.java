@@ -1,5 +1,6 @@
 package java8inaction.parallel;
 
+import java.util.Arrays;
 import java.util.concurrent.RecursiveTask;
 import java.util.stream.LongStream;
 

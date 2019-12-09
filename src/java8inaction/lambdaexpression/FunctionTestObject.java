@@ -1,7 +1,10 @@
 package java8inaction.lambdaexpression;
 
-import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class FunctionTestObject {
     static String s = "Obj";
@@ -22,5 +25,16 @@ public class FunctionTestObject {
          * 接口中静态方法的引用
          */
         print(BinaryOperator.minBy(Integer::compare));
+
+        List<Integer> collect = IntStream.range(0, 100).parallel()
+                .peek(i -> System.out.println("origin:" + i))
+                .filter(i -> i > 5)
+                .peek(i -> System.out.println("after filter: " + i))
+                .filter(i -> i < 9)
+                .peek(i -> System.out.println("after 2ed filter: " + i))
+                .boxed()
+                .collect(Collectors.toList());
+        collect.sort(Comparator.naturalOrder());
+
     }
 }
