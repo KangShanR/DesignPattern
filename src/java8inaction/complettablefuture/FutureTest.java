@@ -39,12 +39,19 @@ public class FutureTest {
                 });
     }
 
+    /**
+     * 工厂方法使用将内部线程的异常直接抛出了，减少很多代码。
+     * @author  KangShan
+     * @return  void
+     * @date    2019/12/14 0:59
+     */
     static void completableFutureTest() {
         CompletableFuture<String> good = CompletableFuture.supplyAsync(() -> {
             throw new RuntimeException("good");
         });
         try {
             String o = good.get();
+            String join = good.join();
             System.out.println(o);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -53,6 +60,14 @@ public class FutureTest {
         }
     }
 
+    /**
+     * native completableFuture 原生的 Thread 会产生同样的超时问题：
+     *      如果新生成的 线程执行过程中出现异常， get() 并不能对异常捕捉，外部 Thread 就会一直
+     *      等待不能被结束回收
+     * @author  KangShan
+     * @return  java.util.concurrent.Future<java.lang.String>
+     * @date    2019/12/14 0:57
+     */
     static Future<String> getF() {
         CompletableFuture<String> future = new CompletableFuture<>();
         new Thread(()-> {
