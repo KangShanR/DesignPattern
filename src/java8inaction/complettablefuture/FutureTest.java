@@ -13,7 +13,7 @@ public class FutureTest {
         Future<Integer> future         = pool.submit(() -> {
             try {
                 Thread.sleep(2900);
-                throw new RuntimeException("exception");
+//                throw new RuntimeException("exception");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -21,14 +21,16 @@ public class FutureTest {
         });
         System.out.println("wait");
         try {
-            System.out.println(future.get());
+            System.out.println(future.get(1, TimeUnit.SECONDS));
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
         }
 
-//        pool.shutdown();
+        pool.shutdown();
     }
 
     static void threadPoolExecutorTest() {
@@ -72,7 +74,7 @@ public class FutureTest {
         CompletableFuture<String> future = new CompletableFuture<>();
         new Thread(()-> {
             String str = null;
-            future.complete((String) str.concat("d"));
+            future.complete(str.concat("d"));
         }).start();
         return future;
     }
