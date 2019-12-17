@@ -1,4 +1,4 @@
-package java8inaction.complettablefuture;
+package java8inaction.completablefuture;
 
 import java.util.concurrent.*;
 
@@ -77,6 +77,10 @@ public class FutureTest {
             future.complete(str.concat("d"));
         }).start();
         return future;
+    }
+
+    static void test() {
+        CompletableFuture[] completableFutures = new CompletableFuture[2];
     }
 
     public static void main(String[] args) {
