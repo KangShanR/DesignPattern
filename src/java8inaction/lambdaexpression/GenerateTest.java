@@ -25,12 +25,12 @@ public class GenerateTest<T> {
     public static void main(String[] args) {
         GenerateTest<Long> longGenerateTest = new GenerateTest<>(3L);
 
-//        Map<String, Long> map = new HashMap<String, Long>() {
-//            {
-//                put("dfd", 33L);
-//            }
-//        };
-//        System.out.println(map);
+        Map<String, Long> map = new HashMap<String, Long>() {
+            {
+                put("dfd", 33L);
+            }
+        };
+        System.out.println(map);
         System.out.println(longGenerateTest.t);
     }
 

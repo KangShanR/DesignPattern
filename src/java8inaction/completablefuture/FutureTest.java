@@ -33,14 +33,6 @@ public class FutureTest {
         pool.shutdown();
     }
 
-    static void threadPoolExecutorTest() {
-        ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(1,
-                r -> {
-                    System.out.println("new Thread Factory");
-                    return new Thread(r);
-                });
-    }
-
     /**
      * 工厂方法使用将内部线程的异常直接抛出了，减少很多代码。
      * @author  KangShan
