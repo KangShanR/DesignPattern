@@ -19,7 +19,7 @@ public class ScheduledThreadPoolExecutorTest {
 
         pool.scheduleWithFixedDelay(() -> {
                     System.out.println(
-                            "scheculed tast time:" + LocalDateTime.now() +
+                            "scheduled task time:" + LocalDateTime.now() +
                                     "; Thread:" + Thread.currentThread().getName());
                     try {
                         Thread.sleep(1000);
@@ -40,7 +40,7 @@ public class ScheduledThreadPoolExecutorTest {
 
         pool.scheduleAtFixedRate(() -> {
                     System.out.println(
-                            "scheculed tast time:" + LocalDateTime.now() +
+                            "scheduled task time:" + LocalDateTime.now() +
                                     "; Thread:" + Thread.currentThread().getName());
                     try {
                         Thread.sleep(1000);
