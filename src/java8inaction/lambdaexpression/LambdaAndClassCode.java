@@ -12,10 +12,17 @@ import java.util.function.Function;
  * @date 2019/12/4 0:21
  */
 public class LambdaAndClassCode {
-    Function function = p -> p;
+    Function<Object, Object> function = p -> {
+        p= p.toString();
+        Integer[] i = {};
+
+        Runnable inc = () -> i[0] += 1;
+        return p;
+    };
 
     public static void main(String[] args) {
-        List<BigDecimal> bigDecimals = Arrays.asList(BigDecimal.ZERO, BigDecimal.ONE, BigDecimal.TEN);
+        List<BigDecimal> bigDecimals = Arrays.asList(
+                BigDecimal.ZERO, BigDecimal.ONE, BigDecimal.TEN);
         bigDecimals.set(0, BigDecimal.valueOf(32));
         bigDecimals.stream().map(b -> b.add(BigDecimal.ONE)).forEach(System.out::println);
     }
