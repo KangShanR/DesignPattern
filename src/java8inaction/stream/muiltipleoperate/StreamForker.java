@@ -40,7 +40,7 @@ public class StreamForker<T> {
         List<BlockingQueue<T>> queues = new ArrayList<>();
         Map<Object, Future<?>> actions =
                                forks.entrySet().stream().reduce(
-                                       new HashMap<Object, Future<?>>(),
+                                       new HashMap<Object, Future<?>>(16),
                                        (map, e) -> {map.put(e.getKey(),
                                                getOperationResult(queues, e.getValue()));
                                        return map;},
@@ -51,15 +51,15 @@ public class StreamForker<T> {
 
     private Future<?> getOperationResult(List<BlockingQueue<T>> queues,
                                          Function<Stream<T>, ?> function) {
-        LinkedBlockingDeque<T> queue = new LinkedBlockingDeque<>();
+        LinkedBlockingQueue<T> queue = new LinkedBlockingQueue<>();
         queues.add(queue);
         Spliterator<T> spliterator = new BlockingQueueSpliterator<>(queue);
         Stream<T>      source      = StreamSupport.stream(spliterator, false);
         return CompletableFuture.supplyAsync(() -> function.apply(source));
     }
 
-    static interface Results{
-        public <R> R get(Object key);
+    interface Results{
+        <R> R get(Object key);
     }
 
     static class ForkingStreamConsumer<T> implements Consumer<T>, Results {

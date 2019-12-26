@@ -13,7 +13,7 @@ import java.util.function.Consumer;
  * @date 2019/12/26 1:14
  */
 public class BlockingQueueSpliterator<T> implements Spliterator<T> {
-    BlockingQueue<T> queue;
+    private final BlockingQueue<T> queue;
 
     public BlockingQueueSpliterator(BlockingQueue<T> queue) {
         this.queue = queue;
@@ -29,7 +29,8 @@ public class BlockingQueueSpliterator<T> implements Spliterator<T> {
                 e.printStackTrace();
             }
         }
-        if (t.equals(StreamForker.ForkingStreamConsumer.STREAM_END)) {
+        if (!t.equals(StreamForker.ForkingStreamConsumer.STREAM_END)) {
+            action.accept(t);
             return true;
         }
         return false;

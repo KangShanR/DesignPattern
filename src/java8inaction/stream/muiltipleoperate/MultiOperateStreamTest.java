@@ -1,7 +1,9 @@
 package java8inaction.stream.muiltipleoperate;
 
+import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * @author KangShan
@@ -9,10 +11,14 @@ import java.util.stream.IntStream;
  */
 public class MultiOperateStreamTest {
     public static void main(String[] args) {
-        StreamForker.Results results = new StreamForker<Integer>(IntStream.range(0, 100).boxed())
-                .fork("1", s -> s.collect(Collectors.toList()))
+
+        String[] strs = {"1","2","3","kang", "shan"};
+        StreamForker.Results results = new StreamForker<>(Arrays.stream(strs))
+                .fork("1", s -> s.filter(i -> i.length() > 3).collect(Collectors.joining(";")))
+                .fork("2", s -> s.filter(i -> i.length() > 0).collect(Collectors.joining(";")))
                 .getResults();
-        System.out.println(String.valueOf(results.get("1")));
-//                .fork("2", s-> s.)
+        Object o = results.get("1");
+        System.out.println(o);
+        System.out.println(results.get("2").toString());
     }
 }
