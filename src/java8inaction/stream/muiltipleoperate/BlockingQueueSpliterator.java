@@ -18,6 +18,18 @@ public class BlockingQueueSpliterator<T> implements Spliterator<T> {
     public BlockingQueueSpliterator(BlockingQueue<T> queue) {
         this.queue = queue;
     }
+
+    public static void main(String[] args) {
+        System.out.println("very");
+    }
+
+    /**
+     * why need to do this operation
+     * @author  KangShan
+     * @param   action consume the elements
+     * @return  boolean
+     * @date    2019/12/27 23:28
+     */
     @Override
     public boolean tryAdvance(Consumer<? super T> action) {
         T t;
