@@ -55,6 +55,9 @@ public class ShiftingBitTest {
         long ll = Integer.MAX_VALUE * 2 * 3;
         System.out.println(ll);
         System.out.println(Integer.MAX_VALUE);
+    }
+
+    public static void bitShifting() {
         System.out.println(Integer.MIN_VALUE - 1 == Integer.MAX_VALUE);
         System.out.println(Integer.toBinaryString(~1));
         System.out.println(Integer.toBinaryString(1^1));
@@ -78,7 +81,7 @@ public class ShiftingBitTest {
     }
 
     public static void main(String[] args){
-        rightAndLestShifting();
-
+//        rightAndLestShifting();
+        bitShifting();
     }
 }
