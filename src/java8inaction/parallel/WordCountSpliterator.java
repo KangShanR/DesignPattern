@@ -23,10 +23,6 @@ public class WordCountSpliterator implements Spliterator<Character> {
         return currentChar < str.length();
     }
 
-    public static void main(String[] args) {
-        System.out.println("asdasdf".substring(1,2));
-    }
-
     @Override
     public Spliterator<Character> trySplit() {
         if (str.length() - currentChar < 10) {

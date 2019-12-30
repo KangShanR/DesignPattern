@@ -11,12 +11,11 @@ public class ShiftingBitTest {
      * 对于位移操作符：
      * 1. `<<` 左移，左移运算，符号位不变。也就是不管是正数还是负数，其符号位应该一直保持不变。
      * 2. 右移运算分两种：
-     *      1. 有符号右移 `>>` 根据其符号位来，如果符号位是 1 ，则在前位填 1，如果符号位是 0 ，将在前位填 0
+     *      1. 有符号右移 `>>` 根据其符号位来，如果符号位是 1 ，则在前位填 1，如果符号位是 0 ，
+     *          将在前位填 0
      *      2. 无符号右移 `>>>` 直接在高位填 0 ，负数会直接转为正数
      */
-
-    public static void main(String[] args){
-
+    private static void bitShiftingTest() {
         System.out.println("positive int ------------------");
         int i = 1;
         System.out.println(Integer.toBinaryString(i));
@@ -59,5 +58,27 @@ public class ShiftingBitTest {
         System.out.println(Integer.MIN_VALUE - 1 == Integer.MAX_VALUE);
         System.out.println(Integer.toBinaryString(~1));
         System.out.println(Integer.toBinaryString(1^1));
+    }
+
+    /**
+     * 验证位移运算
+     * `<<` `>>` 两种操作不会对符号位进行特殊管理：左移将一直左移，右移将一直右移，不管是
+     * 否有溢出
+     * `>>>` 将对称号位进行补充，一直对其填充最开始的符号
+     * @return  void
+     * @date    2019/12/30 18:58
+     */
+    static void rightAndLestShifting() {
+
+        System.out.println(Integer.toBinaryString(1<<31));
+        System.out.println(Integer.toBinaryString(1<<33));
+        System.out.println(-2147483648 << 1);
+        System.out.println(Integer.toBinaryString(-2147483648<<1));
+        System.out.println(Integer.toBinaryString(0));
+    }
+
+    public static void main(String[] args){
+        rightAndLestShifting();
+
     }
 }

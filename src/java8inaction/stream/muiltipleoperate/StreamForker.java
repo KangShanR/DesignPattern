@@ -59,6 +59,12 @@ public class StreamForker<T> {
     }
 
     interface Results{
+        /**
+         * 获取计算结果
+         * @param   key 键
+         * @return  R
+         * @date    2019/12/27 12:03
+         */
         <R> R get(Object key);
     }
 

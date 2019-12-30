@@ -1,7 +1,5 @@
 package java8inaction.stream.muiltipleoperate;
 
-import java8inaction.Stream;
-
 import java.util.Spliterator;
 import java.util.concurrent.BlockingQueue;
 import java.util.function.Consumer;
@@ -49,5 +47,13 @@ public class BlockingQueueSpliterator<T> implements Spliterator<T> {
     @Override
     public int characteristics() {
         return 0;
+    }
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("while");
+            break;
+        }
+        System.out.println();
     }
 }
