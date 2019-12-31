@@ -17,9 +17,6 @@ public class BlockingQueueSpliterator<T> implements Spliterator<T> {
         this.queue = queue;
     }
 
-    public static void main(String[] args) {
-        System.out.println("very");
-    }
 
     /**
      * why need to do this operation

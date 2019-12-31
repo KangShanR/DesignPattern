@@ -65,23 +65,40 @@ public class ShiftingBitTest {
 
     /**
      * 验证位移运算
-     * `<<` `>>` 两种操作不会对符号位进行特殊管理：左移将一直左移，右移将一直右移，不管是
+     * `<<` `>>` 两种操作会对符号位进行特殊管理：在进行移位后对符号进行填充符号
      * 否有溢出
-     * `>>>` 将对称号位进行补充，一直对其填充最开始的符号
-     * @return  void
+     * `>>>` *将不对称号位进行补充*
      * @date    2019/12/30 18:58
      */
     static void rightAndLestShifting() {
 
-        System.out.println(Integer.toBinaryString(1<<31));
-        System.out.println(Integer.toBinaryString(1<<33));
-        System.out.println(-2147483648 << 1);
-        System.out.println(Integer.toBinaryString(-2147483648<<1));
-        System.out.println(Integer.toBinaryString(0));
+        /**
+         * `<<` 不对符号位特殊处理，bit 直接向基移动覆盖符号位在所不惜
+         * 任何数 `<<` 32 与32 的倍数位都将是其本身;
+         * 注意以下两个操作的不同之处：
+         *      1 << 32 与 1<<31<<1
+         *      前者是将一个数直接移动 32 位，而后一个是将 1 左移31 位后成为另一个数后再左移 1 bit。
+         *      失之毫厘，差之千里：前者结果是1，后者结果是 0（
+         *          在位移越界后，越界的 bit 全部被抹掉，直到位数达到 32（数的类型决定） 的倍数。
+         *          准确地讲，应该是对位移位数进行取模后再进行位移）；
+         */
+        System.out.println(Integer.toBinaryString(1<<31<<1));
+        System.out.println(Integer.toBinaryString(1<<32));
+        /**
+         * `>>>` 将不对符号位特殊处理：符号位与其他位一起向右移动，与 `<<` 原理一致
+         * `>>` 在右移时会将前位进行补 符号位：如果是负数将不停地填充 1 ，正数则填充 0
+         */
+        System.out.println("正数右移：" + Integer.toBinaryString(3>>1));
+        System.out.println("负数右移：" + Integer.toBinaryString(-1024));
+        System.out.println("负数右移：" + Integer.toBinaryString(-1024 >> 31));
+        System.out.println("负数右移：" + Integer.toBinaryString(-1024 >>> 3));
+//        System.out.println(Integer.toBinaryString(-1));
+//        System.out.println(Integer.toBinaryString(-1>>>1));
+//        System.out.println(-1>>>1);
     }
 
     public static void main(String[] args){
-//        rightAndLestShifting();
-        bitShifting();
+        rightAndLestShifting();
+//        bitShifting();
     }
 }
