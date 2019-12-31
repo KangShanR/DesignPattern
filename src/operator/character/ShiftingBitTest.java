@@ -97,8 +97,19 @@ public class ShiftingBitTest {
 //        System.out.println(-1>>>1);
     }
 
+    /**
+     * 对于减 1 的操作，从被减数的最后一个 1 到最后的位与结果的同样的位刚好相反，
+     *      这就意味着这两个数的最后那些位进行 与 操作结果是 0
+     */
+    static void sub() {
+        int i = 68;
+        System.out.println(Integer.toBinaryString(i));
+        System.out.println(Integer.toBinaryString(i-1));
+    }
+
     public static void main(String[] args){
-        rightAndLestShifting();
+//        rightAndLestShifting();
 //        bitShifting();
+        sub();
     }
 }
