@@ -31,16 +31,15 @@ public class BlockingQueueSpliterator<T> implements Spliterator<T> {
         while (true) {
             try {
                 t = queue.take();
-                break;
+                if (!t.equals(StreamForker.ForkingStreamConsumer.STREAM_END)) {
+                    action.accept(t);
+                    return true;
+                }
+                return false;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        if (!t.equals(StreamForker.ForkingStreamConsumer.STREAM_END)) {
-            action.accept(t);
-            return true;
-        }
-        return false;
     }
 
     @Override
