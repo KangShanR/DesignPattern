@@ -21,7 +21,7 @@ public class StreamForker<T> {
         this.stream = stream;
     }
 
-    public StreamForker fork(Object key, Function<Stream<T>, ?> function) {
+    public StreamForker<T> fork(Object key, Function<Stream<T>, ?> function) {
         this.forks.put(key, function);
         return this;
     }

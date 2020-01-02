@@ -12,6 +12,7 @@ public class AssignValueOperator {
     }
 
     public static void main(String[] args){
+        System.out.println("good");
         StringBuilder s = new StringBuilder("Iphone");
         System.out.println(s);
         System.out.println(builderStr(s).toString());
