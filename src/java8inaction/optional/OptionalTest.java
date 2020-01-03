@@ -1,6 +1,8 @@
 package java8inaction.optional;
 
-import java.util.Optional;
+import java.lang.invoke.LambdaMetafactory;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * @author KangShan
@@ -8,12 +10,19 @@ import java.util.Optional;
  */
 public class OptionalTest {
 
-    public static void main(String[] args) {
-        System.out.println(Optional.of(1)
-                .map(String::valueOf)
-                .map(Integer::new)
-                .flatMap(Optional::of)
-                .flatMap(Optional::ofNullable)
-                .get() == 1);
+    Function<Integer, String> f = (Integer i) -> i.toString();
+    Consumer<Integer> c = (Integer i) -> {};
+
+    void test(String s) {
+
     }
+
+//    public static void main(String[] args) {
+//        System.out.println(Optional.of(1)
+//                .map(String::valueOf)
+//                .map(Integer::new)
+//                .flatMap(Optional::of)
+//                .flatMap(Optional::ofNullable)
+//                .get() == 1);
+//    }
 }
