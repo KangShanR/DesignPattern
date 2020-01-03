@@ -26,16 +26,31 @@ public class StreamForker<T> {
         return this;
     }
 
+    /**
+     * 将 stream 中元素 copy 到各个 iterator.BlockingQueue 中，再使用 StreamSupport.stream 造出新的
+     * Stream 来，分别对 stream 进行运算即可。
+     * 这样操作对于一般的 {@link Collection}使用与调用 {@link Collection#stream()}并无二致，且增加代码量。
+     *      所以对于 {@link Collection} 不推荐使用此类操作进行 fork Stream。
+     * 那么此类方法适用的情形：对于计算机内的本地文件流的多样操作
+     *      如果需要读取非RAM内存中的数据，如果使用 {@link java.io.InputStream} 多次读取会浪费资源，
+     *      待研究
+     * @return  java8inaction.stream.muiltipleoperate.StreamForker.Results
+     * @date    2020/1/3 17:13
+     */
     public Results getResults() {
         ForkingStreamConsumer<T> consumer = build();
-        try {
-            stream.sequential().forEach(consumer);
-        }finally {
-            consumer.finish();
-        }
+        //将 stream 中各个元素 copy 到 spliterator.BlockingQueue 中
+        stream.sequential().forEach(consumer);
+        //在各个 BlockingQueue 尾部加上 end flag
+        consumer.finish();
         return consumer;
     }
 
+    /**
+     *
+     * @return  java8inaction.stream.muiltipleoperate.StreamForker.ForkingStreamConsumer<T>
+     * @date    2020/1/3 16:25
+     */
     public ForkingStreamConsumer<T> build() {
         List<BlockingQueue<T>> queues = new ArrayList<>();
         Map<Object, Future<?>> actions =
@@ -49,6 +64,13 @@ public class StreamForker<T> {
         return new ForkingStreamConsumer<>(queues, actions);
     }
 
+    /**
+     * 异步执行各个 consumer
+     * @param   queues 阻塞队列集合
+     * @param   function steam consumer
+     * @return  执行结果 future
+     * @date    2020/1/3 16:11
+     */
     private Future<?> getOperationResult(List<BlockingQueue<T>> queues,
                                          Function<Stream<T>, ?> function) {
         LinkedBlockingQueue<T> queue = new LinkedBlockingQueue<>();

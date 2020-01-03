@@ -27,19 +27,17 @@ public class BlockingQueueSpliterator<T> implements Spliterator<T> {
      */
     @Override
     public boolean tryAdvance(Consumer<? super T> action) {
-        T t;
-        while (true) {
-            try {
-                t = queue.take();
-                if (!t.equals(StreamForker.ForkingStreamConsumer.STREAM_END)) {
-                    action.accept(t);
-                    return true;
-                }
-                return false;
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        T t = null;
+        try {
+            t = queue.take();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        if (!StreamForker.ForkingStreamConsumer.STREAM_END.equals(t)) {
+            action.accept(t);
+            return true;
+        }
+        return false;
     }
 
     @Override
