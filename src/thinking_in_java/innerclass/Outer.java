@@ -1,5 +1,7 @@
 package thinking_in_java.innerclass;
 
+import java.io.OutputStream;
+
 /**
  * @author KangShan
  * @date 2019/11/17 19:08
@@ -12,7 +14,26 @@ public class Outer {
         System.out.println("outer construct");
     }
     class Inner {
+        {
+            System.out.println("inner initializing");
+        }
 
+        Inner() {
+            System.out.println("inner construct");
+        }
+        Outer getOuter(){
+            return Outer.this;
+//            return null;
+        }
+    }
+    class Inner2 {
+        {
+            System.out.println("inner2 initializing");
+        }
+
+        Inner2() {
+            System.out.println("inner2 construct");
+        }
         Outer getOuter(){
             return Outer.this;
 //            return null;
