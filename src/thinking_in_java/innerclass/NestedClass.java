@@ -13,13 +13,23 @@ public class NestedClass {
         System.out.println("Nested out construct");
     }
 
+    void method() {
+        System.out.println("outer method");
+    }
+
     static class Inner{
         {
             System.out.println("Inner initialize...");
+            main(new String[]{""});
+        }
+
+        public static void main(String[] args) {
+            NestedClass nestedClass = new NestedClass();
+//            System.out.println(nestedClass.new Inner());
         }
     }
 
     public static void main(String[] args) {
-        new Inner();
+        Inner inner = new Inner();
     }
 }

@@ -26,7 +26,11 @@ public class Outer {
 //            return null;
         }
     }
-    class Inner2 {
+
+    /**
+     * Inherited from Inner class
+     */
+    class Inner2 extends Outer.Inner {
         {
             System.out.println("inner2 initializing");
         }
@@ -34,6 +38,7 @@ public class Outer {
         Inner2() {
             System.out.println("inner2 construct");
         }
+        @Override
         Outer getOuter(){
             return Outer.this;
 //            return null;

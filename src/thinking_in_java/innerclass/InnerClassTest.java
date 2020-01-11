@@ -6,12 +6,12 @@ package thinking_in_java.innerclass;
  * @date 2019/11/17 19:13
  */
 public class InnerClassTest extends Outer.Inner2 {
-    InnerClassTest(Outer in) {
+    InnerClassTest(Outer outer) {
         /**
          * 此处 super 调用的意义不再是调用外部类的构造方法了，
          * 调用 inner 内部类的构造方法
          */
-        in.super();
+        outer.super();
         System.out.println("test construct");
     }
 
