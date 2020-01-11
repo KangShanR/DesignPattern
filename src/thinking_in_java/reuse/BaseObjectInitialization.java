@@ -5,10 +5,10 @@ package thinking_in_java.reuse;
  * @date 2019/11/3 23:33
  */
 public class BaseObjectInitialization {
-//    static {
-//        System.out.println("base static block ... ");
-//    }
-//    static int j = assign(3);
+    static {
+        System.out.println("base static block ... ");
+    }
+    static int j = assign(3);
 
     int i = assign(1);
 
