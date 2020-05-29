@@ -22,7 +22,7 @@ public class ProxyDraw {
 		this.target = target;
 	}
 	
-	/* 
+	/**
 	 * 使用匿名内部类，获取代理实例
 	 */
 	public Object getProxyIns(Object target, Object proxyOpr) {
