@@ -52,4 +52,28 @@ public class QuickSort {
         //left partition
         sort(array, startIndex, i - 1);
     }
+
+    public static int partIndex(int[] array, int startIndex, int endIndex) {
+        int temp;
+        int pivot = array[endIndex];
+        int i = startIndex;
+        for (int j = startIndex; j < endIndex; j++) {
+            if (array[j] <= pivot) {
+                temp = array[i];
+                if (array[i] > pivot && i != j) {
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+                i++;
+            }
+        }
+        if (i != endIndex) {
+            temp = array[i];
+            array[i] = pivot;
+            array[endIndex] = temp;
+        } else {
+            i--;
+        }
+        return i;
+    }
 }
