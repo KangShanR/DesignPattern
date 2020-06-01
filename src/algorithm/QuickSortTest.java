@@ -119,7 +119,8 @@ public class QuickSortTest {
      */
     int[] combineArrays(int[] array1, int[] array2){
         if(array1.length == 0 || array2.length == 0){
-            throw new IllegalArgumentException("Invalid array parameter: " + array1.toString() + "; " + array2.toString());
+            throw new IllegalArgumentException("Invalid array parameter: " +
+                    array1.toString() + "; " + array2.toString());
         }
         int   length      = array1.length + array2.length;
         int[] result = new int[length];
