@@ -1,7 +1,7 @@
 package algorithm;
 
-import javax.sound.midi.Soundbank;
 import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
 
 /**
  * quick sort can't be stable
@@ -13,8 +13,28 @@ public class QuickSort {
         int[] array = {1,31,23,33,2,22,33,32,21,32,34};
         Arrays.stream(array).forEach(i -> System.out.print(i + "  "));
         System.out.println();
+        System.out.println(select(array, 8,0, array.length -1));
         sort(array, 0, array.length - 1);
         Arrays.stream(array).forEach(i -> System.out.print(i + "  "));
+    }
+
+    /**
+     * select element in rank
+     * @param   array the array
+     *                rank, startIndex, endIndex
+     * @return  int the element
+     * @date    2020/6/2 12:28
+     */
+    public static int select(int[] array, int rank, int startIndex, int endIndex) {
+        int index = partIndex(array, startIndex, endIndex);
+        int no    = index + 1;
+        if (no > rank) {
+            return select(array, rank, startIndex, index - 1);
+        } else if (no < rank) {
+            return select(array, rank, no, endIndex);
+        } else {
+            return array[index];
+        }
     }
 
     public static void sort(int[] array, int startIndex, int endIndex) {
@@ -31,6 +51,9 @@ public class QuickSort {
     }
 
     public static int partIndex(int[] array, int startIndex, int endIndex) {
+        if (startIndex == endIndex) {
+            return startIndex;
+        }
         int temp;
         if (endIndex - startIndex == 1) {
             if (array[startIndex] > array[endIndex]) {
