@@ -37,6 +37,13 @@ public class QuickSort {
         }
     }
 
+    /**
+     * sort those elements in array between startIndex and endIndex
+     * @param   array the array be sorted
+     * @param   startIndex  thd index started in array
+     *                     endIndex
+     * @date    2020/6/2 16:05
+     */
     public static void sort(int[] array, int startIndex, int endIndex) {
         int index = partIndex(array, startIndex, endIndex);
 
@@ -50,6 +57,12 @@ public class QuickSort {
         }
     }
 
+    /**
+     * part the array
+     * @param   array startIndex, endIndex
+     * @return  the index be parted in array
+     * @date    2020/6/2 16:08
+     */
     public static int partIndex(int[] array, int startIndex, int endIndex) {
         if (startIndex == endIndex) {
             return startIndex;
