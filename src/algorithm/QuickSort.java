@@ -10,12 +10,28 @@ import java.util.concurrent.ExecutorService;
  */
 public class QuickSort {
     public static void main(String[] args) {
+        int j = 1;
+        switchT(j);
         int[] array = {1,31,23,33,2,22,33,32,21,32,34};
         Arrays.stream(array).forEach(i -> System.out.print(i + "  "));
         System.out.println();
         System.out.println(select(array, 8,0, array.length -1));
         sort(array, 0, array.length - 1);
         Arrays.stream(array).forEach(i -> System.out.print(i + "  "));
+    }
+
+    private static void switchT(int j) {
+        switch (j) {
+            case 1:
+                System.out.println(j);
+            case 2:
+                System.out.println(j);
+                break;
+            case 3:
+                System.out.println(j);
+                default:
+                    System.out.println("default");
+        }
     }
 
     /**
