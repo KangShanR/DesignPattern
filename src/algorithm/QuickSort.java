@@ -1,7 +1,6 @@
 package algorithm;
 
 import java.util.Arrays;
-import java.util.concurrent.ExecutorService;
 
 /**
  * quick sort can't be stable
@@ -11,6 +10,7 @@ import java.util.concurrent.ExecutorService;
 public class QuickSort {
     public static void main(String[] args) {
         int j = 1;
+        System.out.println(j + (2 >> 1));
         switchT(j);
         int[] array = {1,31,23,33,2,22,33,32,21,32,34};
         Arrays.stream(array).forEach(i -> System.out.print(i + "  "));
@@ -29,8 +29,8 @@ public class QuickSort {
                 break;
             case 3:
                 System.out.println(j);
-                default:
-                    System.out.println("default");
+            default:
+                System.out.println("default");
         }
     }
 
