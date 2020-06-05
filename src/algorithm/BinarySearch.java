@@ -6,9 +6,10 @@ package algorithm;
  */
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] array = {1, 2, 3,3,3, 4,4,4,4, 5,5,5,5, 6, 7, 8,8,8,8};
+        int[] array = {1, 4,6};
         int[] array1 = {1,1};
-        System.out.println(search(array1, 0, 0, array1.length - 1, true));
+//        System.out.println(search(array, 5, 0, array.length - 1, false));
+        System.out.println(obscureSearch(array, 2, 0 , array.length -1, false));
     }
 
     static int search(int[] array, int value, int lo, int hi, boolean firstOne) {
@@ -18,13 +19,7 @@ public class BinarySearch {
         int i = lo + (hi - lo >> 1);
         int target = array[i];
         if (target == value) {
-            if(firstOne) {
-                while (i > 1 && array[--i] == value) {}
-                return i > 1 ? ++i:i;
-            }else {
-                while (i< array.length - 1 && array[++i] == value) {}
-                return i < array.length - 1 ? --i:i;
-            }
+            return boundIndex(array, i, firstOne);
         } else if (target > value) {
             return i == 0 ? -1 : search(array, value, lo, i - 1, firstOne);
         } else {
@@ -33,27 +28,64 @@ public class BinarySearch {
     }
 
     static int obscureSearch(int[] array, int value, int lo, int hi, boolean firstOne) {
-        if (array[lo] == value) {
-            return lo;
-        } else if (array[hi] == value) {
-            return hi;
+        if (lo - hi == -1) {
+            if (array[lo] == value) {
+                return boundIndex(array, lo, firstOne);
+            } else if (array[hi] == value) {
+                return boundIndex(array, hi, firstOne);
+            }else if(array[lo] > value) {
+                return firstOne? lo: -1;
+            } else if (array[hi] < value) {
+                return firstOne ? -1 : hi;
+            }else {//between low and high
+                return firstOne ? hi : lo;
+            }
         }
         int i = lo + (hi - lo >> 1);
         int target = array[i];
         if (target == value) {
-            if(firstOne) {
-                while (i > -1 && array[i] == value) {i--;}
-                return i;
-            }else {
-                while (i< array.length && array[i] == value) {i++;}
-                return i;
-            }
-        } else if (i - lo == 1) {
-            return firstOne ? lo : i;
+            return boundIndex(array, i, firstOne);
         } else if (target > value) {
-            return search(array, value, lo, i - 1, firstOne);
+            if (lo - i == -1) {
+                if (array[lo] == value) {
+                    return boundIndex(array, lo, firstOne);
+                } else if (array[i] == value) {
+                    return boundIndex(array, i, firstOne);
+                }else if(array[lo] > value) {
+                    return firstOne? lo: -1;
+                } else if (array[i] < value) {
+                    return firstOne ? -1 : i;
+                }else {//between low and high
+                    return firstOne ? lo : i;
+                }
+            }
+            return obscureSearch(array, value, lo, i - 1, firstOne);
         } else {
-            return search(array, value, i + 1, hi, firstOne);
+            if (hi - i == -1) {
+                if (array[hi] == value) {
+                    return boundIndex(array, hi, firstOne);
+                } else if (array[i] == value) {
+                    return boundIndex(array, i, firstOne);
+                }else if(array[i] > value) {
+                    return firstOne? i: -1;
+                } else if (array[hi] < value) {
+                    return firstOne ? -1 : hi;
+                }else {//between low and high
+                    return firstOne ? i : hi;
+                }
+            }
+            return obscureSearch(array, value, i + 1, hi, firstOne);
+        }
+    }
+
+    static int boundIndex(int[] array, int index, boolean firstOne) {
+        int value = array[index];
+        if(firstOne) {
+            while (index > 1 && array[--index] == value) {}
+            return index > 1 ? ++index:index;
+        }else {
+            while (index< array.length - 1 && array[++index] == value) {}
+            return index < array.length - 1 ? --index:index;
         }
     }
 }
