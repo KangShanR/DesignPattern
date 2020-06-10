@@ -1,18 +1,23 @@
 package java8inaction.completablefuture;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.*;
 
 /**
  * @author KangShan
  * @date 2019/12/12 17:57
  */
+@Slf4j
 public class FutureTest {
 
     static void executorServiceTest() {
         ExecutorService pool = Executors.newCachedThreadPool();
         Future<Integer> future         = pool.submit(() -> {
             try {
+                log.info("sleep。。。。");
                 Thread.sleep(2900);
+                log.info("sleep over ........");
 //                throw new RuntimeException("exception");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -21,7 +26,7 @@ public class FutureTest {
         });
         System.out.println("wait");
         try {
-            System.out.println(future.get(1, TimeUnit.SECONDS));
+            System.out.println(future.get(11, TimeUnit.SECONDS));
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -47,6 +52,7 @@ public class FutureTest {
             String o = good.get();
             String join = good.join();
             System.out.println(o);
+            System.out.println(join);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

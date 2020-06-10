@@ -27,6 +27,12 @@ public class BinarySearch {
         }
     }
 
+    /**
+     * todo need be optimized
+     * @param   array, value, lo, hi, firstOne
+     * @return  int
+     * @date    2020/6/10 18:27
+     */
     static int obscureSearch(int[] array, int value, int lo, int hi, boolean firstOne) {
         if (lo - hi == -1) {
             if (array[lo] == value) {
