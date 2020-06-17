@@ -18,7 +18,7 @@ public class FutureTest {
                 log.info("sleep。。。。");
                 Thread.sleep(2900);
                 log.info("sleep over ........");
-//                throw new RuntimeException("exception");
+                throw new RuntimeException("exception");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -46,8 +46,9 @@ public class FutureTest {
      */
     static void completableFutureTest() {
         CompletableFuture<String> good = CompletableFuture.supplyAsync(() -> {
-            throw new RuntimeException("good");
-        });
+            return "hello";
+            //            throw new RuntimeException("good");
+        }).thenApply((f) -> f + "applied;");
         try {
             String o = good.get();
             String join = good.join();
@@ -83,8 +84,8 @@ public class FutureTest {
 
     public static void main(String[] args) {
 //        ExecutorServiceTest();
-//        completableFutureTest();
-        executorServiceTest();
+        completableFutureTest();
+//        executorServiceTest();
 //        try {
 //            System.out.println(getF().get(5, TimeUnit.SECONDS));
 //        } catch (InterruptedException e) {
