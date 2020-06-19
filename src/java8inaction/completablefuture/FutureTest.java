@@ -82,9 +82,32 @@ public class FutureTest {
         CompletableFuture[] completableFutures = new CompletableFuture[2];
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        ExecutorCompletionService<String> service = new ExecutorCompletionService<>(ForkJoinPool.commonPool());
+        service.submit(() -> {
+            log.info(Thread.currentThread().toString());
+            //            Thread.sleep(3000);
+            log.info("j1");
+            return "hw1";
+        });
+        service.submit(() -> {
+            log.info(Thread.currentThread().toString());
+            Thread.sleep(2000);
+            log.info("j2");
+            return "hw2";
+        });
+        service.submit(() -> {
+            log.info(Thread.currentThread().toString());
+            Thread.sleep(1000);
+            log.info("j3");
+            return "hw3";
+        });
+        Thread.sleep(1000);
+//        log.info(service.poll().get());
+//        log.info(service.take().get());
+//        log.info(service.take().get());
 //        ExecutorServiceTest();
-        completableFutureTest();
+//        completableFutureTest();
 //        executorServiceTest();
 //        try {
 //            System.out.println(getF().get(5, TimeUnit.SECONDS));
