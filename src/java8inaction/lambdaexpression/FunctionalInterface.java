@@ -1,7 +1,5 @@
 package java8inaction.lambdaexpression;
 
-import thinking_in_java.reuse.ObjectInitialization;
-
 /**
  * @author KangShan
  * @date 2019/11/19 1:51
